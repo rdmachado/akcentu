@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -9,6 +10,7 @@ namespace Esperanta_Klavaro
         KeyboardHook kbHook;
         NotifyIcon ni;
         ContextMenu cm;
+        Dictionary<char, char> replacementMap;
         System.Drawing.Icon onIcon;
         System.Drawing.Icon offIcon;
 
@@ -20,9 +22,21 @@ namespace Esperanta_Klavaro
             Application.Run(new MainProgram());
         }
 
-
         public MainProgram()
         {
+            replacementMap = new Dictionary<char, char>()
+            {
+                { 'c', 'ĉ' },
+                { 'C', 'Ĉ' },
+                { 'g', 'ĝ' },
+                { 'G', 'Ĝ' },
+                { 'j', 'ĵ' },
+                { 'J', 'Ĵ' },
+                { 's', 'ŝ' },
+                { 'S', 'Ŝ' },
+                { 'u', 'ŭ' },
+                { 'U', 'Ŭ' }
+            };
             onIcon = new System.Drawing.Icon("greenstar2.ico");
             offIcon = new System.Drawing.Icon("graystar.ico");
 
@@ -88,20 +102,7 @@ namespace Esperanta_Klavaro
        
         private char GetAccented(char c)
         {
-            switch (c)
-            {
-                case 'c': return 'ĉ';
-                case 'C': return 'Ĉ';
-                case 'g': return 'ĝ';
-                case 'G': return 'Ĝ';
-                case 'j': return 'ĵ';
-                case 'J': return 'Ĵ';
-                case 's': return 'ŝ';
-                case 'S': return 'Ŝ';
-                case 'u': return 'ŭ';
-                case 'U': return 'Ŭ';
-                default: return c;
-            }
+            return replacementMap.ContainsKey(c) ? replacementMap[c] : c;
         }
 
         protected override void Dispose(bool disposing)
