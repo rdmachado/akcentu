@@ -91,13 +91,8 @@ namespace Esperanta_Klavaro
                     SendKeys.SendWait("{BACKSPACE}" + accentedChar);
                     e.Handled = true;
                 }
-                else
-                    lastKeyPressed = e.KeyChar;
             }
-            else
-            {
-                lastKeyPressed = e.KeyChar;
-            }
+            lastKeyPressed = e.KeyChar;
         }
        
         private char GetAccented(char c)
