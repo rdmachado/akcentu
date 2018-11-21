@@ -35,7 +35,9 @@ namespace Esperanta_Klavaro
                 { 's', 'ŝ' },
                 { 'S', 'Ŝ' },
                 { 'u', 'ŭ' },
-                { 'U', 'Ŭ' }
+                { 'U', 'Ŭ' },
+                { 'h', 'ĥ' },
+                { 'H', 'Ĥ' }
             };
             onIcon = new System.Drawing.Icon("greenstar2.ico");
             offIcon = new System.Drawing.Icon("graystar.ico");
